@@ -11,16 +11,13 @@ module.exports = class extends Generator {
 
     this.argument("projectName", {
       desc: "The name of the new project",
-      default: "jaicp-project",
+      required: false,
     });
-  }
 
-  paths() {
-    if (this.options.projectName) {
-      this.destinationRoot(
-        this.destinationRoot() + path.sep + this.options.projectName
-      );
-    }
+    this.projectName = () =>
+      this.options.projectName || // First priority: project name passed as CLI argument
+      this.props.projectName || // Second priority: project name passed in response to prompt
+      `jaicp-${this.props.template}`; // Fallback: prefixed template name
   }
 
   initializing() {
@@ -28,27 +25,44 @@ module.exports = class extends Generator {
   }
 
   prompting() {
-    const prompts = [];
+    const prompts = [
+      {
+        name: "template",
+        message: "Which sample project do you want to start with?",
+        type: "list",
+        choices: [
+          {
+            name: "Empty project",
+            value: "empty-project",
+          },
+        ],
+      },
+      {
+        name: "nluLanguage",
+        message: "What language should the bot support?",
+        type: "list",
+        choices: ["en", "ru"],
+        default: "en",
+      },
+    ];
 
     if (!this.options.projectName) {
       prompts.push({
         name: "projectName",
         message: "What will be the name of the new project?",
-        default: "jaicp-project",
       });
     }
-
-    prompts.push({
-      name: "nluLanguage",
-      message: "What language should the bot support?",
-      type: "list",
-      choices: ["en", "ru"],
-      default: "en",
-    });
 
     return this.prompt(prompts).then((props) => {
       this.props = props;
     });
+  }
+
+  paths() {
+    this.sourceRoot([this.sourceRoot(), this.props.template].join(path.sep));
+    this.destinationRoot(
+      [this.destinationRoot(), this.projectName()].join(path.sep)
+    );
   }
 
   writing() {
@@ -56,17 +70,14 @@ module.exports = class extends Generator {
       this.templatePath("chatbot.yaml"),
       this.destinationPath("chatbot.yaml"),
       {
-        projectName: this.options.projectName || this.props.projectName,
+        projectName: this.projectName(),
         nluLanguage: this.props.nluLanguage,
       }
     );
     this.fs.copy(
-      this.templatePath(`${this.props.nluLanguage}/src/main.sc`),
-      this.destinationPath("src/main.sc")
+      this.templatePath(`${this.props.nluLanguage}/`),
+      this.destinationPath()
     );
-    this.fs.copy(
-      this.templatePath(`${this.props.nluLanguage}/test/test.xml`),
-      this.destinationPath("test/test.xml")
-    );
+    this.log(`New project created as ${chalk.red(this.projectName())}.`);
   }
 };
