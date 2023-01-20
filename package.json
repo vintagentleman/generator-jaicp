@@ -2,20 +2,65 @@
   "name": "generator-jaicp",
   "version": "1.0.0",
   "description": "Get up and running with your JAICP projects quickly",
-  "author": {
-    "name": "Konstantin Sipunin",
-    "email": "k.sipunin@just-ai.com"
-  },
-  "files": [
-    "generators"
-  ],
-  "main": "generators/index.js",
   "keywords": [
     "bot",
     "chatbot",
     "jaicp",
     "yeoman-generator"
   ],
+  "repository": "just-ai/generator-jaicp",
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Konstantin Sipunin",
+    "email": "k.sipunin@just-ai.com"
+  },
+  "main": "generators/index.js",
+  "files": [
+    "generators"
+  ],
+  "scripts": {
+    "pretest": "eslint .",
+    "test": "jest"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.json": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "eslintConfig": {
+    "env": {
+      "jest": true,
+      "node": true
+    },
+    "plugins": [
+      "prettier"
+    ],
+    "extends": [
+      "xo",
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": "error"
+    }
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "yeoman-generator": "^3.2.0",
+    "yosay": "^2.0.2"
+  },
   "devDependencies": {
     "eslint": "^8.32.0",
     "eslint-config-prettier": "^8.6.0",
@@ -30,50 +75,5 @@
   },
   "engines": {
     "npm": ">= 4.0.0"
-  },
-  "dependencies": {
-    "chalk": "^2.4.2",
-    "yeoman-generator": "^3.2.0",
-    "yosay": "^2.0.2"
-  },
-  "jest": {
-    "testEnvironment": "node"
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.json": [
-      "prettier --write",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "eslintConfig": {
-    "extends": [
-      "xo",
-      "prettier"
-    ],
-    "env": {
-      "jest": true,
-      "node": true
-    },
-    "rules": {
-      "prettier/prettier": "error"
-    },
-    "plugins": [
-      "prettier"
-    ]
-  },
-  "scripts": {
-    "pretest": "eslint .",
-    "test": "jest"
-  },
-  "repository": "just-ai/generator-jaicp",
-  "license": "Apache-2.0"
+  }
 }
