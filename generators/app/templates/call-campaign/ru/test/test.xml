@@ -1,0 +1,75 @@
+<test>
+  <test-case id="Есть симптомы">
+    <q>/start</q>
+    <a state="/Start"/>
+    <a state="/Start"/>
+    <a state="/Симптомы"/>
+    <q>да</q>
+    <a state="/Симптомы/Есть"/>
+    <a state="/Прощание"/>
+  </test-case>
+
+  <test-case id="Нет симптомов">
+    <q>/start</q>
+    <a state="/Start"/>
+    <a state="/Start"/>
+    <a state="/Симптомы"/>
+    <q>нет</q>
+    <a state="/Симптомы/Нет"/>
+    <a state="/Прощание"/>
+  </test-case>
+
+  <test-case id="Не распознано">
+    <q>/start</q>
+    <a>Приветствую вас, незнакомец!</a>
+    <a state="/Start"/>
+    <a state="/Симптомы"/>
+    <q>все сложно</q>
+    <a>Так и записала: все сложно. Помните о гигиене и о средствах индивидуальной защиты.</a>
+    <a state="/Прощание"/>
+  </test-case>
+
+  <test-case id="Просьба перезвонить, первый раз время некорректно">
+    <state>Симптомы</state>
+    <q>позвоните позже</q>
+    <a>Когда вам перезвонить?</a>
+    <q>за завтраком</q>
+    <a>Когда можно будет позвонить?</a>
+    <q>в одиннадцать утра</q>
+    <a state="/Перезвоните"/>
+    <a state="/Прощание"/>
+  </test-case>
+
+  <test-case id="Просьба перезвонить, время корректно">
+    <state>Симптомы</state>
+    <q>извините не могу говорить</q>
+    <a>Когда вам перезвонить?</a>
+    <q>после шести</q>
+    <a state="/Перезвоните"/>
+    <a state="/Прощание"/>
+  </test-case>
+
+  <test-case id="Просьба перезвонить с указанием времени">
+    <state>Симптомы</state>
+    <q>перезвоните пожалуйста через час</q>
+    <a state="/Перезвоните"/>
+    <a state="/Прощание"/>
+  </test-case>
+
+  <test-case id="Плохое качество связи">
+    <state>Симптомы</state>
+    <event>speechNotRecognized</event>
+    <a state="/NoInput"/>
+    <event>speechNotRecognized</event>
+    <a state="/NoInput"/>
+    <event>speechNotRecognized</event>
+    <responseData field="replies[0]">
+      {
+        "type": "audio",
+        "audioUrl": "https://example.com/comms-issue.wav",
+        "state": "/NoInput"
+      }
+    </responseData>
+    <a state="/Прощание"/>
+  </test-case>
+</test>

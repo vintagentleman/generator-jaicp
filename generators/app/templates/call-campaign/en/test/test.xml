@@ -1,0 +1,75 @@
+<test>
+  <test-case id="Positive case">
+    <q>/start</q>
+    <a state="/Start"/>
+    <a state="/Start"/>
+    <a state="/Symptoms"/>
+    <q>yes</q>
+    <a state="/Symptoms/Positive"/>
+    <a state="/Goodbye"/>
+  </test-case>
+
+  <test-case id="Negative case">
+    <q>/start</q>
+    <a state="/Start"/>
+    <a state="/Start"/>
+    <a state="/Symptoms"/>
+    <q>everything is fine</q>
+    <a state="/Symptoms/Negative"/>
+    <a state="/Goodbye"/>
+  </test-case>
+
+  <test-case id="Unrecognized case">
+    <q>/start</q>
+    <a>Hello, stranger!</a>
+    <a state="/Start"/>
+    <a state="/Symptoms"/>
+    <q>it’s complicated</q>
+    <a>So you say: it’s complicated. Remember about proper hygiene and wearing face masks.</a>
+    <a state="/Goodbye"/>
+  </test-case>
+
+  <test-case id="Callback request, time is incorrect">
+    <state>Symptoms</state>
+    <q>could you please call back later</q>
+    <a>When should I call you back?</a>
+    <q>at breakfast</q>
+    <a>At what time will you be available?</a>
+    <q>at 11 am</q>
+    <a state="/Callback"/>
+    <a state="/Goodbye"/>
+  </test-case>
+
+  <test-case id="Callback request, time is correct">
+    <state>Symptoms</state>
+    <q>sorry I can’t talk at the moment</q>
+    <a>When should I call you back?</a>
+    <q>after 6 pm</q>
+    <a state="/Callback"/>
+    <a state="/Goodbye"/>
+  </test-case>
+
+  <test-case id="Callback request with time provided">
+    <state>Symptoms</state>
+    <q>please ring me back at 5 pm</q>
+    <a state="/Callback"/>
+    <a state="/Goodbye"/>
+  </test-case>
+
+  <test-case id="Bad connection">
+    <state>Symptoms</state>
+    <event>speechNotRecognized</event>
+    <a state="/NoInput"/>
+    <event>speechNotRecognized</event>
+    <a state="/NoInput"/>
+    <event>speechNotRecognized</event>
+    <responseData field="replies[0]">
+      {
+        "type": "audio",
+        "audioUrl": "https://example.com/comms-issue.wav",
+        "state": "/NoInput"
+      }
+    </responseData>
+    <a state="/Goodbye"/>
+  </test-case>
+</test>

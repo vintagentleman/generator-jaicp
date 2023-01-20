@@ -1,0 +1,310 @@
+{
+  "settings": {
+    "language": "en",
+    "spellingCorrection": false,
+    "classificationAlgorithm": "sts",
+    "timezone": "UTC",
+    "extendedSettings": {
+      "patternsEnabled": true,
+      "stsSettings": {
+        "synonymMatch": 0.5
+      },
+      "dictionaryAutogeneration": true
+    },
+    "shared": false
+  },
+  "intents": [
+    {
+      "path": "/Agree",
+      "enabled": true,
+      "shared": false,
+      "phrases": [
+        {
+          "text": "yep"
+        },
+        {
+          "text": "okay"
+        },
+        {
+          "text": "I have"
+        },
+        {
+          "text": "I do"
+        },
+        {
+          "text": "yes"
+        },
+        {
+          "text": "yeah"
+        }
+      ],
+      "patterns": [],
+      "priority": 0
+    },
+    {
+      "path": "/Callback",
+      "enabled": true,
+      "shared": false,
+      "phrases": [
+        {
+          "text": "could you call me later"
+        },
+        {
+          "text": "ring me back"
+        },
+        {
+          "text": "I’m busy at the moment"
+        },
+        {
+          "text": "call me back later"
+        },
+        {
+          "text": "I can’t talk right now"
+        },
+        {
+          "text": "we’ll talk later"
+        },
+        {
+          "text": "ring me @duckling.time"
+        },
+        {
+          "text": "call me back @duckling.time"
+        }
+      ],
+      "patterns": [],
+      "slots": [
+        {
+          "name": "dateTime",
+          "entity": "duckling.time",
+          "required": true,
+          "prompts": [
+            "When should I call you back?",
+            "At what time will you be available?",
+            "When will it be best to call?"
+          ],
+          "array": false
+        }
+      ],
+      "priority": 0
+    },
+    {
+      "path": "/Disagree",
+      "enabled": true,
+      "shared": false,
+      "phrases": [
+        {
+          "text": "i don’t have anything"
+        },
+        {
+          "text": "no need"
+        },
+        {
+          "text": "no"
+        },
+        {
+          "text": "I don’t"
+        }
+      ],
+      "patterns": [],
+      "priority": 0
+    },
+    {
+      "path": "/Healthy",
+      "enabled": true,
+      "shared": false,
+      "phrases": [
+        {
+          "text": "I’m fit as a fiddle"
+        },
+        {
+          "text": "we are all okay"
+        },
+        {
+          "text": "there is no problem"
+        },
+        {
+          "text": "everything is fine"
+        }
+      ],
+      "patterns": [],
+      "priority": 0
+    },
+    {
+      "path": "/Sick",
+      "enabled": true,
+      "shared": false,
+      "phrases": [
+        {
+          "text": "I really am tired"
+        },
+        {
+          "text": "I’m sick"
+        },
+        {
+          "text": "quite feverish, yes"
+        },
+        {
+          "text": "I have covid"
+        },
+        {
+          "text": "ill"
+        }
+      ],
+      "patterns": [],
+      "priority": 0
+    }
+  ],
+  "entities": [],
+  "enabledSystemEntities": [
+    "duckling.number",
+    "duckling.time",
+    "duckling.duration",
+    "duckling.phone-number",
+    "duckling.email",
+    "duckling.url",
+    "duckling.interval"
+  ],
+  "spellerDictionary": [
+    {
+      "word": "иран",
+      "frequency": 1
+    },
+    {
+      "word": "россиюшка",
+      "frequency": 1
+    },
+    {
+      "word": "(~китай|чин*)",
+      "frequency": 1
+    },
+    {
+      "word": "родина",
+      "frequency": 1
+    },
+    {
+      "word": "италия",
+      "frequency": 1
+    },
+    {
+      "word": "россия",
+      "frequency": 1
+    },
+    {
+      "word": "moscow",
+      "frequency": 1
+    },
+    {
+      "word": "italy",
+      "frequency": 1
+    },
+    {
+      "word": "обитель",
+      "frequency": 1
+    },
+    {
+      "word": "родине",
+      "frequency": 1
+    },
+    {
+      "word": "матушка",
+      "frequency": 1
+    },
+    {
+      "word": "нашей",
+      "frequency": 1
+    },
+    {
+      "word": "наша",
+      "frequency": 1
+    },
+    {
+      "word": "зла",
+      "frequency": 1
+    },
+    {
+      "word": "зло",
+      "frequency": 1
+    },
+    {
+      "word": "иране",
+      "frequency": 1
+    }
+  ],
+  "systemEntities": [
+    {
+      "name": "duckling.number",
+      "version": "v2",
+      "enabled": true
+    },
+    {
+      "name": "duckling.ordinal",
+      "version": "v2",
+      "enabled": false
+    },
+    {
+      "name": "duckling.amount-of-money",
+      "version": "v2",
+      "enabled": false
+    },
+    {
+      "name": "duckling.distance",
+      "version": "v2",
+      "enabled": false
+    },
+    {
+      "name": "duckling.quantity",
+      "version": "v2",
+      "enabled": false
+    },
+    {
+      "name": "duckling.temperature",
+      "version": "v2",
+      "enabled": false
+    },
+    {
+      "name": "duckling.volume",
+      "version": "v2",
+      "enabled": false
+    },
+    {
+      "name": "duckling.time",
+      "version": "v2",
+      "enabled": true
+    },
+    {
+      "name": "duckling.date",
+      "version": "v2",
+      "enabled": false
+    },
+    {
+      "name": "duckling.time-of-day",
+      "version": "v2",
+      "enabled": false
+    },
+    {
+      "name": "duckling.duration",
+      "version": "v2",
+      "enabled": true
+    },
+    {
+      "name": "duckling.phone-number",
+      "version": "v2",
+      "enabled": true
+    },
+    {
+      "name": "duckling.email",
+      "version": "v2",
+      "enabled": true
+    },
+    {
+      "name": "duckling.url",
+      "version": "v2",
+      "enabled": true
+    },
+    {
+      "name": "duckling.interval",
+      "version": "v2",
+      "enabled": true
+    }
+  ]
+}

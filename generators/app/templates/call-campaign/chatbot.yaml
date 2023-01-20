@@ -1,0 +1,23 @@
+name: <%= projectName %>
+entryPoint: main.sc
+
+botEngine: v2
+language: <%= nluLanguage %>
+
+tests:
+  include:
+    - test.xml
+
+sts:
+  noMatchThreshold: 0.2
+nlp:
+  considerContextDepthInStateSelectionV2: false
+  intentNoMatchThresholds:
+    phrases: 0.2
+    patterns: 0.2
+
+injector:
+  slotfilling:
+    maxSlotRetries: 3
+    stopOnAnyIntent: false
+    stopOnAnyIntentThreshold: 0.2

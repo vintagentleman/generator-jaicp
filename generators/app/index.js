@@ -35,6 +35,10 @@ module.exports = class extends Generator {
             name: "Empty project",
             value: "empty-project",
           },
+          {
+            name: "Outbound call campaign",
+            value: "call-campaign",
+          },
         ],
       },
       {

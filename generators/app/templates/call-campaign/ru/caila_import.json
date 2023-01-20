@@ -1,0 +1,314 @@
+{
+  "settings": {
+    "language": "ru",
+    "spellingCorrection": true,
+    "classificationAlgorithm": "sts",
+    "timezone": "UTC",
+    "extendedSettings": {
+      "patternsEnabled": true,
+      "stsSettings": {
+        "synonymMatch": 0.5
+      },
+      "dictionaryAutogeneration": true
+    },
+    "shared": false
+  },
+  "intents": [
+    {
+      "path": "/Болен",
+      "enabled": true,
+      "shared": false,
+      "phrases": [
+        {
+          "text": "я больна"
+        },
+        {
+          "text": "болею"
+        },
+        {
+          "text": "высокая температура"
+        },
+        {
+          "text": "у меня коронавирус"
+        }
+      ],
+      "patterns": []
+    },
+    {
+      "path": "/Здоров",
+      "enabled": true,
+      "shared": false,
+      "phrases": [
+        {
+          "text": "я здорова"
+        },
+        {
+          "text": "мы в порядке"
+        },
+        {
+          "text": "проблем нет"
+        },
+        {
+          "text": "все слава богу"
+        }
+      ],
+      "patterns": []
+    },
+    {
+      "path": "/Отказ",
+      "enabled": true,
+      "shared": false,
+      "phrases": [
+        {
+          "text": "нет"
+        },
+        {
+          "text": "не хочу"
+        },
+        {
+          "text": "не надо"
+        },
+        {
+          "text": "не"
+        }
+      ],
+      "patterns": []
+    },
+    {
+      "path": "/Перезвоните",
+      "enabled": true,
+      "shared": false,
+      "phrases": [
+        {
+          "text": "позвоните потом"
+        },
+        {
+          "text": "перезвоните"
+        },
+        {
+          "text": "сейчас не могу"
+        },
+        {
+          "text": "позвоните попозже"
+        },
+        {
+          "text": "не могу говорить"
+        },
+        {
+          "text": "давайте потом"
+        },
+        {
+          "text": "позвоните @duckling.time"
+        },
+        {
+          "text": "перезвоните @duckling.time"
+        }
+      ],
+      "patterns": [],
+      "slots": [
+        {
+          "name": "dateTime",
+          "entity": "duckling.time",
+          "required": true,
+          "prompts": [
+            "Когда вам перезвонить?",
+            "Когда можно будет позвонить?",
+            "Когда я могу вам позвонить?"
+          ],
+          "array": false
+        }
+      ]
+    },
+    {
+      "path": "/Согласие",
+      "enabled": true,
+      "shared": false,
+      "phrases": [
+        {
+          "text": "да"
+        },
+        {
+          "text": "давай"
+        },
+        {
+          "text": "расскажи"
+        },
+        {
+          "text": "хочу"
+        },
+        {
+          "text": "ну ладно"
+        },
+        {
+          "text": "ок"
+        },
+        {
+          "text": "окей"
+        },
+        {
+          "text": "а"
+        },
+        {
+          "text": "наверное"
+        },
+        {
+          "text": "давай читай"
+        },
+        {
+          "text": "ага"
+        },
+        {
+          "text": "угу"
+        },
+        {
+          "text": "прочитай"
+        },
+        {
+          "text": "читай"
+        },
+        {
+          "text": "слушаю"
+        },
+        {
+          "text": "спасибо"
+        }
+      ],
+      "patterns": []
+    }
+  ],
+  "entities": [],
+  "enabledSystemEntities": [
+    "duckling.number",
+    "duckling.time",
+    "duckling.duration",
+    "duckling.phone-number",
+    "duckling.email",
+    "duckling.url",
+    "mystem.persn",
+    "mystem.famn",
+    "mystem.patrn"
+  ],
+  "spellerDictionary": [
+    {
+      "word": "иран",
+      "frequency": 1
+    },
+    {
+      "word": "россиюшка",
+      "frequency": 1
+    },
+    {
+      "word": "(~китай|чин*)",
+      "frequency": 1
+    },
+    {
+      "word": "родина",
+      "frequency": 1
+    },
+    {
+      "word": "италия",
+      "frequency": 1
+    },
+    {
+      "word": "петербург",
+      "frequency": 1
+    },
+    {
+      "word": "россия",
+      "frequency": 1
+    },
+    {
+      "word": "moscow",
+      "frequency": 1
+    },
+    {
+      "word": "italy",
+      "frequency": 1
+    },
+    {
+      "word": "обитель",
+      "frequency": 1
+    },
+    {
+      "word": "родине",
+      "frequency": 1
+    },
+    {
+      "word": "санкт",
+      "frequency": 1
+    },
+    {
+      "word": "матушка",
+      "frequency": 1
+    },
+    {
+      "word": "нашей",
+      "frequency": 1
+    },
+    {
+      "word": "наша",
+      "frequency": 1
+    },
+    {
+      "word": "зла",
+      "frequency": 1
+    },
+    {
+      "word": "зло",
+      "frequency": 1
+    },
+    {
+      "word": "иране",
+      "frequency": 1
+    }
+  ],
+  "systemEntities": [
+    {
+      "name": "duckling.number",
+      "version": "v1",
+      "enabled": true
+    },
+    {
+      "name": "duckling.time",
+      "version": "v1",
+      "enabled": true
+    },
+    {
+      "name": "duckling.duration",
+      "version": "v1",
+      "enabled": true
+    },
+    {
+      "name": "duckling.phone-number",
+      "version": "v1",
+      "enabled": true
+    },
+    {
+      "name": "duckling.email",
+      "version": "v1",
+      "enabled": true
+    },
+    {
+      "name": "duckling.url",
+      "version": "v1",
+      "enabled": true
+    },
+    {
+      "name": "mystem.persn",
+      "enabled": true
+    },
+    {
+      "name": "mystem.famn",
+      "enabled": true
+    },
+    {
+      "name": "mystem.patrn",
+      "enabled": true
+    },
+    {
+      "name": "duckling.interval",
+      "version": "v2",
+      "enabled": false
+    }
+  ]
+}
