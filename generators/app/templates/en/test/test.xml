@@ -1,0 +1,6 @@
+<test>
+  <test-case>
+    <q>my first test</q>
+    <a>I didn’t get it. You said: my first test</a>
+  </test-case>
+</test>

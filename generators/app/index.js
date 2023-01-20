@@ -4,35 +4,47 @@ const chalk = require("chalk");
 const yosay = require("yosay");
 
 module.exports = class extends Generator {
-  prompting() {
-    // Have Yeoman greet the user.
-    this.log(
-      yosay(`Welcome to the good ${chalk.red("generator-jaicp")} generator!`)
-    );
+  initializing() {
+    this.log(yosay(`Welcome to the ${chalk.red("JAICP")} project generator!`));
+  }
 
+  prompting() {
     const prompts = [
       {
-        type: "confirm",
-        name: "someAnswer",
-        message: "Would you like to enable this option?",
-        default: true,
+        name: "projectName",
+        message: "What will be the new project name?",
+        default: "jaicp-project",
+      },
+      {
+        name: "nluLanguage",
+        message: "What language should the bot support?",
+        type: "list",
+        choices: ["en", "ru"],
+        default: "en",
       },
     ];
 
     return this.prompt(prompts).then((props) => {
-      // To access props later use this.props.someAnswer;
       this.props = props;
     });
   }
 
   writing() {
-    this.fs.copy(
-      this.templatePath("dummyfile.txt"),
-      this.destinationPath("dummyfile.txt")
+    this.fs.copyTpl(
+      this.templatePath("chatbot.yaml"),
+      this.destinationPath("chatbot.yaml"),
+      {
+        projectName: this.props.projectName,
+        nluLanguage: this.props.nluLanguage,
+      }
     );
-  }
-
-  install() {
-    this.installDependencies();
+    this.fs.copy(
+      this.templatePath(`${this.props.nluLanguage}/src/main.sc`),
+      this.destinationPath("src/main.sc")
+    );
+    this.fs.copy(
+      this.templatePath(`${this.props.nluLanguage}/test/test.xml`),
+      this.destinationPath("test/test.xml")
+    );
   }
 };
