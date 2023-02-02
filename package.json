@@ -1,6 +1,6 @@
 {
   "name": "generator-jaicp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Get up and running with your JAICP projects quickly",
   "keywords": [
     "bot",
@@ -8,6 +8,10 @@
     "jaicp",
     "yeoman-generator"
   ],
+  "repository": {
+    "type": "git",
+    "url": "github:vintagentleman/generator-jaicp"
+  },
   "license": "Apache-2.0",
   "author": {
     "name": "Konstantin Sipunin",
